@@ -11,7 +11,7 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
+grails.project.groupId = 'com.twitter_manager' // change this to alter the default package name and Maven publishing destination
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
@@ -97,21 +97,42 @@ environments {
 
 // log4j configuration
 log4j.main = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+
+        console name:'stdout', layout:pattern(conversionPattern: '%d{dd MMM yyyy HH:mm:ss,SSS} %c{2} %m%n')
+        rollingFile name:'consumerlog', maxFileSize:'200MB', file:'/tmp/logs/consumer.log', layout:pattern(conversionPattern: '%d{yyyy/MM/dd HH:mm:ss} %c{2} %m%n')
+        rollingFile name:'stacktrace', maxFileSize:'200MB', file:'/tmp/logs/stacktrace_consumer.log', layout:pattern(conversionPattern: '%d{yyyy/MM/dd HH:mm:ss} %c{2} %m%n')
+    }
+
+    root{
+        info 'consumerlog'
+        // Descomentar si se quieren ver los test en consola
+        info  'stdout'
+    }
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+            'org.codehaus.groovy.grails.web.pages',          // GSP
+            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+            'org.codehaus.groovy.grails.commons',            // core / classloading
+            'org.codehaus.groovy.grails.plugins',            // plugins
+            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
 }
+
+rabbitmq {
+    connectionfactory {
+        username = 'guest'
+        password = 'guest'
+        hostname = 'localhost'
+    }
+    queues = {
+        exchange name: 'tw.feed', type: direct, durable: true, autoDelete: false, {
+            twitter_feed autoDelete: false, durable: true, exclusive: false
+        }
+    }
+}
+
