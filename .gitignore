@@ -37,3 +37,7 @@
 
 # Twitter4j
 twitter4j.properties
+
+# Out files
+/out
+salida.csv

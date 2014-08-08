@@ -1,16 +1,19 @@
 package com.twitter_manager
 
+import com.twitter_manager.tweet.TweetFactory
+import com.twitter_manager.tweet.TweetProcessor
 import grails.converters.JSON
 
 class ConsumerService {
 
+    TweetProcessor tweetProcessor
+    TweetFactory tweetFactory
+
     static rabbitQueue = 'twitter_feed'
 
     def handleMessage(String textMessage) {
-        println "handling message: "
         def data = JSON.parse textMessage
-        // simulate work
-        Thread.sleep(Math.round(Math.random()*100))
-        print data.text
+        Tweet tweet = tweetFactory.createTweetFromJSON(data)
+        tweetProcessor.processTweet(tweet)
     }
 }

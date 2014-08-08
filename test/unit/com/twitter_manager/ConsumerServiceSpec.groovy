@@ -16,5 +16,7 @@ class ConsumerServiceSpec extends Specification {
     }
 
     void "test something"() {
+        expect:
+        true
     }
 }
