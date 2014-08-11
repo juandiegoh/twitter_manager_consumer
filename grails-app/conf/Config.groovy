@@ -98,7 +98,6 @@ environments {
 // log4j configuration
 log4j.main = {
     appenders {
-
         console name:'stdout', layout:pattern(conversionPattern: '%d{dd MMM yyyy HH:mm:ss,SSS} %c{2} %m%n')
         rollingFile name:'consumerlog', maxFileSize:'200MB', file:'/tmp/logs/consumer.log', layout:pattern(conversionPattern: '%d{yyyy/MM/dd HH:mm:ss} %c{2} %m%n')
         rollingFile name:'stacktrace', maxFileSize:'200MB', file:'/tmp/logs/stacktrace_consumer.log', layout:pattern(conversionPattern: '%d{yyyy/MM/dd HH:mm:ss} %c{2} %m%n')
@@ -121,6 +120,12 @@ log4j.main = {
             'org.springframework',
             'org.hibernate',
             'net.sf.ehcache.hibernate'
+
+    debug   'groovyx.net.http',
+            'groovyx.net.http.HttpURLClient',
+            'org.apache.http',
+            'org.apache.http.headers',
+            'org.apache.http.headers.wire'
 }
 
 rabbitmq {

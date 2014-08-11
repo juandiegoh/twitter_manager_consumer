@@ -1,10 +1,10 @@
 package com.twitter_manager.rules
 
-import com.twitter_manager.Tweet
+import com.twitter_manager.tweet.TweetDTO
 
 abstract class Rule {
 
-    abstract Boolean valid(Tweet tweet)
+    abstract Boolean valid(TweetDTO tweet)
 
     static mapping = {
         version false

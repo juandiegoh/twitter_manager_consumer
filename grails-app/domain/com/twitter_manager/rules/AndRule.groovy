@@ -1,6 +1,6 @@
 package com.twitter_manager.rules
 
-import com.twitter_manager.Tweet
+import com.twitter_manager.tweet.TweetDTO
 
 class AndRule extends Rule {
 
@@ -14,7 +14,7 @@ class AndRule extends Rule {
     }
 
     @Override
-    Boolean valid(Tweet tweet) {
+    Boolean valid(TweetDTO tweet) {
         def lowerCaseText = tweet.getText().toLowerCase()
         getAndWordsSeparatedByToken().every {
             lowerCaseText.contains(it.toLowerCase())

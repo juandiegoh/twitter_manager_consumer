@@ -1,13 +1,14 @@
 package com.twitter_manager
 
 import com.twitter_manager.rules.Rule
+import com.twitter_manager.tweet.TweetDTO
 
 class Campaign {
 
     String name
     String keywords
     static hasMany = [rules: Rule]
-    Boolean on = true
+    Boolean turnedOn = true
 
     def keys
     static transients = ['keys']
@@ -16,15 +17,7 @@ class Campaign {
         rules = new HashSet<Rule>()
     }
 
-    def addTweetToCampaignIfValid(Tweet tweet) {
-        if (this.isValidTweet(tweet)) {
-            tweet.addCampaign(this)
-            return tweet
-        }
-        return false
-    }
-
-    boolean isValidTweet(Tweet tweet) {
+    boolean isValidTweet(TweetDTO tweet) {
         if(includesKeywords(tweet.getText())) {
             rules.every {
                 it.valid(tweet)

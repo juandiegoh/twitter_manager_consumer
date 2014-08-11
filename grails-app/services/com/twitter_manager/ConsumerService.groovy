@@ -1,5 +1,6 @@
 package com.twitter_manager
 
+import com.twitter_manager.tweet.TweetDTO
 import com.twitter_manager.tweet.TweetFactory
 import com.twitter_manager.tweet.TweetProcessor
 import grails.converters.JSON
@@ -13,7 +14,7 @@ class ConsumerService {
 
     def handleMessage(String textMessage) {
         def data = JSON.parse textMessage
-        Tweet tweet = tweetFactory.createTweetFromJSON(data)
+        TweetDTO tweet = tweetFactory.createTweetFromJSON(data)
         tweetProcessor.processTweet(tweet)
     }
 }

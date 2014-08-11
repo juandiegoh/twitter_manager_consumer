@@ -1,6 +1,6 @@
 package com.twitter_manager.rules
 
-import com.twitter_manager.Tweet
+import com.twitter_manager.tweet.TweetDTO
 import spock.lang.Specification
 
 class AndRuleSpec extends Specification {
@@ -22,7 +22,7 @@ class AndRuleSpec extends Specification {
 
     void "if the andWords are not present _ should return false"() {
         given:
-        def notValidTweet = new Tweet()
+        def notValidTweet = new TweetDTO()
         notValidTweet.text = "This game is fun."
 
         expect:
@@ -31,7 +31,7 @@ class AndRuleSpec extends Specification {
 
     void "if the andWords are present _ should return true"() {
         given:
-        def validTweet = new Tweet()
+        def validTweet = new TweetDTO()
         validTweet.text = "This game is carlotto."
 
         expect:
@@ -40,7 +40,7 @@ class AndRuleSpec extends Specification {
 
     void "if there are more words and all are present _ should return true"() {
         given:
-        def validTweet = new Tweet()
+        def validTweet = new TweetDTO()
         validTweet.text = "This game is Argentina carlotto."
 
         expect:
@@ -49,7 +49,7 @@ class AndRuleSpec extends Specification {
 
     void "if there are more words and not all are present _ should return false"() {
         given:
-        def notValidTweet = new Tweet()
+        def notValidTweet = new TweetDTO()
         notValidTweet.text = "This game is carlotto."
 
         expect:
