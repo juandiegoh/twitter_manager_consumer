@@ -8,4 +8,13 @@ class SQLCampaignRepository implements CampaignRepository {
     def getTurnedOnCampaigns() {
         return Campaign.findAllByTurnedOn(true)
     }
+
+    @Override
+    def findById(id) {
+        return Campaign.findById(id)
+    }
+
+    def findAll() {
+        return Campaign.findAll()
+    }
 }

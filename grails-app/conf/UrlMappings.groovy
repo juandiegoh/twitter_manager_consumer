@@ -1,10 +1,25 @@
 class UrlMappings {
 
 	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
+
+        "/campaigns/$id"(controller: "campaigns", parseRequest: true){
+            action = [GET: 'show']
+        }
+
+        "/campaigns"(controller: "campaigns", parseRequest: true){
+            action = [GET: 'index']
+        }
+
+        "/campaigns/$id/turnon"(controller: "campaigns", parseRequest: true){
+            action = [PUT: 'turnOn']
+        }
+
+        "/campaigns/$id/turnoff"(controller: "campaigns", parseRequest: true){
+            action = [PUT: 'turnOff']
+        }
+
+        "/campaigns"(controller: "campaigns", parseRequest: true){
+            action = [POST: 'create']
         }
 
         "/"(view:"/index")
