@@ -105,7 +105,7 @@ log4j.main = {
 
     root{
         info 'consumerlog'
-        // Descomentar si se quieren ver los test en consola
+        // Uncomment if you want to see log in stdout
         info  'stdout'
     }
 
@@ -121,11 +121,12 @@ log4j.main = {
             'org.hibernate',
             'net.sf.ehcache.hibernate'
 
-    debug   'groovyx.net.http',
-            'groovyx.net.http.HttpURLClient',
-            'org.apache.http',
-            'org.apache.http.headers',
-            'org.apache.http.headers.wire'
+    // Uncomment if you want to see HTTP logs (request -> response) for example for Sentiment140
+    //    debug   'groovyx.net.http',
+    //            'groovyx.net.http.HttpURLClient',
+    //            'org.apache.http',
+    //            'org.apache.http.headers',
+    //            'org.apache.http.headers.wire'
 }
 
 rabbitmq {

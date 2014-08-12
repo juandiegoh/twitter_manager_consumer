@@ -22,6 +22,10 @@ class UrlMappings {
             action = [POST: 'create']
         }
 
+        "/tweets"(controller: "tweetCampaign", parseRequest: true){
+            action = [GET: 'index']
+        }
+
         "/"(view:"/index")
         "500"(view:'/error')
 	}

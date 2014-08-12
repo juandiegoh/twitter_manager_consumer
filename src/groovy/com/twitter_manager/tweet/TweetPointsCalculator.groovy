@@ -11,13 +11,13 @@ class TweetPointsCalculator {
         switch (it) {
             case 0: 0
                 break
-            case (1..100): 1
+            case { it >= 1 && it <= 100 }: 1
                 break
-            case (101..500): 2
+            case { it >= 101 && it <= 500 }: 2
                 break
-            case (501..1000): 3
+            case { it >= 501 && it <= 1000 }: 3
                 break
-            case (1001..5000): 4
+            case { it >= 1001 && it <= 5000 }: 4
                 break
             default: 5
                 break
@@ -28,27 +28,27 @@ class TweetPointsCalculator {
         switch (it) {
             case 0: 0
                 break
-            case (1..50): 1
+            case { it >= 1 && it <= 50 }: 1
                 break
-            case (51..100): 2
+            case { it >= 51 && it <= 100 }: 2
                 break
-            case (101..500): 3
+            case { it >= 101 && it <= 500 }: 3
                 break
-            case (501..1000): 4
+            case { it >= 501 && it <= 1000 }: 4
                 break
-            case (1001..2000): 5
+            case { it >= 1001 && it <= 2000 }: 5
                 break
-            case (2001..5000): 6
+            case { it >= 2001 && it <= 5000 }: 6
                 break
-            case (5001..10000): 7
+            case { it >= 5001 && it <= 10000 }: 7
                 break
-            case (10001..50000): 8
+            case { it >= 10001 && it <= 50000 }: 8
                 break
-            case (50001..100000): 9
+            case { it >= 50001 && it <= 100000 }: 9
                 break
-            case (100001..500000): 10
+            case { it >= 100001 && it <= 500000 }: 10
                 break
-            case (500001..5000000): 11
+            case { it >= 500001 && it <= 5000000 }: 11
                 break
             default: 12
                 break

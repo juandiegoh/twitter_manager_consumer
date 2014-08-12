@@ -12,9 +12,15 @@ class ConsumerService {
 
     static rabbitQueue = 'twitter_feed'
 
-//    def handleMessage(String textMessage) {
-//        def data = JSON.parse textMessage
-//        TweetDTO tweet = tweetFactory.createTweetFromJSON(data)
-//        tweetProcessor.processTweet(tweet)
-//    }
+    def handleMessage(String textMessage) {
+        try {
+            def data = JSON.parse textMessage
+            TweetDTO tweet = tweetFactory.createTweetFromJSON(data)
+            tweetProcessor.processTweet(tweet)
+            null
+        } catch(e) {
+            log.error("Que anda pasando por aqui???", e)
+            null
+        }
+    }
 }

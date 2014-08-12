@@ -1,4 +1,4 @@
 package com.twitter_manager.exceptions
 
-class ResourceNotFoundException extends Exception {
+class ResourceNotFoundException extends RuntimeException {
 }

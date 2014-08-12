@@ -33,6 +33,7 @@ class TweetPointsCalculatorSpec extends Specification {
         "3"     | 10000       | 10000     | 6000000   | NEGATIVE  | { result -> result == new BigDecimal(-100) }
         "4"     | 502         | 1002      | 54345     | POSITIVE  | { result -> result >= 0 && result <= 100 }
         "5"     | 124         | 327423    | 3423      | NEUTRAL   | { result -> result == new BigDecimal(0) }
+        "6"     | 0           | 0         | 268       | NEGATIVE  | { result -> result == -5 }
     }
 
     def createTweetCampaign(retweets, favorites, followers, sentimentValue) {
@@ -44,5 +45,22 @@ class TweetPointsCalculatorSpec extends Specification {
             it.sentimentValue = sentimentValue
         }
         return tweetCampaign
+    }
+
+    @Unroll
+    void "points for #followers followers must be #expectedResult"() {
+        when:
+        def points = this.tweetPointsCalculator.pointsFor("FOLLOWERS", followers)
+
+        then:
+        Math.abs(points - expectedResult) < 0.00001
+
+        where:
+        followers | expectedResult
+        0         | 0
+        1         | 1/60
+        999999999 | 0.2
+        268       | 1/20
+
     }
 }

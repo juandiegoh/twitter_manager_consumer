@@ -13,8 +13,8 @@ class Campaign {
     def keys
     static transients = ['keys']
 
-    Campaign() {
-        rules = new HashSet<Rule>()
+    static mapping = {
+        rules lazy: false
     }
 
     boolean isValidTweet(TweetDTO tweet) {

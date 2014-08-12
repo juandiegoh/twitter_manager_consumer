@@ -8,4 +8,8 @@ class SQLTweetCampaignRepository implements TweetCampaignRepository {
     def save(TweetCampaign tweetCampaign) {
         return tweetCampaign.save(failOnError: true)
     }
+
+    def findAllByCampaignAndTweetDateCreatedBetween(campaign, dateFrom, dateTo) {
+        return TweetCampaign.findAllByCampaignAndTweetDateCreatedBetween(campaign, dateFrom, dateTo)
+    }
 }

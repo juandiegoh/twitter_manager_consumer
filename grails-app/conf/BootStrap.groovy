@@ -1,21 +1,20 @@
 import com.twitter_manager.Campaign
 import com.twitter_manager.rules.AndRule
-import com.twitter_manager.rules.Rule
-import grails.converters.JSON
+import org.codehaus.groovy.grails.web.json.JSONObject
 
 class BootStrap {
 
     def init = { servletContext ->
         if(Campaign.count() == 0) {
             AndRule andRule = new AndRule().with {
-                it.andWords = "ninja"
+                it.andWords = "dead"
                 it
             }
 
             Campaign campaign = new Campaign()
             campaign.with {
                 it.name = "test1"
-                it.keywords = "turtles"
+                it.keywords = "Robin Williams"
                 it.turnedOn = true
                 it.rules = [andRule]
             }
@@ -39,6 +38,8 @@ class BootStrap {
                     rules: c.rules
             ]
         }
+
+        JSONObject.NULL.metaClass.asBoolean = {-> false}
     }
 
     def destroy = {

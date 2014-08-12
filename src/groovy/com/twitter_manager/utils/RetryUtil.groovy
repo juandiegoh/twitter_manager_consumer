@@ -1,4 +1,4 @@
-package com.twitter_manager
+package com.twitter_manager.utils
 
 class RetryUtil {
     static retry(int times, long sleepTime = 0, Closure c) {

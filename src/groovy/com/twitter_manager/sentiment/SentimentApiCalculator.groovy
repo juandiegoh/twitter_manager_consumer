@@ -1,6 +1,6 @@
 package com.twitter_manager.sentiment
 
-import com.twitter_manager.RetryUtil
+import com.twitter_manager.utils.RetryUtil
 import groovyx.net.http.ContentType
 import groovyx.net.http.HTTPBuilder
 
