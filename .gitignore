@@ -41,3 +41,6 @@ twitter4j.properties
 # Out files
 /out
 salida.csv
+
+# db.lock
+consumer_prod.lock.db

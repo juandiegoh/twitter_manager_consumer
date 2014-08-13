@@ -20,5 +20,9 @@ class TweetCampaign {
     Date tweetDateCreated
 
     static constraints = {
+        userId nullable: true
+        followers nullable: true
+        countryCode nullable: true
+        country nullable: true
     }
 }

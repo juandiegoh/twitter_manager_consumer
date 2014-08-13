@@ -23,7 +23,7 @@ class UrlMappings {
         }
 
         "/tweets"(controller: "tweetCampaign", parseRequest: true){
-            action = [GET: 'index']
+            action = [POST: 'index']
         }
 
         "/"(view:"/index")
