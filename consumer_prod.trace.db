@@ -860,3 +860,17 @@ group by sentiment_value, hour(timestamp) [42122-176]
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
+08-12 23:53:02 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT SENTIMENT, CAMPAIGN_ID, COUNT(1)
+FROM TWEET_CAMPAIGN
+GROUP_BY CAMPAIGN_ID[*], SENTIMENT "; SQL statement:
+select sentiment, campaign_id, count(1)
+from tweet_campaign
+group_by campaign_id, sentiment [42000-176]
+08-12 23:53:17 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT SENTIMENT_VALUE, CAMPAIGN_ID, COUNT(1)
+FROM TWEET_CAMPAIGN
+GROUP_BY CAMPAIGN_ID[*], SENTIMENT_VALUE "; SQL statement:
+select sentiment_value, campaign_id, count(1)
+from tweet_campaign
+group_by campaign_id, sentiment_value [42000-176]
